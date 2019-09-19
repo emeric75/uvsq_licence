@@ -22,19 +22,6 @@ int main(int argc, char **argv){
 			nl = 0;
 			words = 0;
 			while((c = fgetc(f)) != EOF){
-				/*if(c == '\n' || c == '\t' || c == ' '){
-					words++;
-					count++;
-					if(c == '\n') nl++;
-					do{
-						count++;
-						if(c == '\n') nl++;
-						c = fgetc(f);
-					}
-					while(c == '\n' || c == '\t' || c == ' ');
-					count++;
-				}else count++;
-				*/
 				if(c == '\n' || c == '\t' || c == ' ' || c == EOF){
 					a_iswhite = iswhite;
 					iswhite = 1;
@@ -50,16 +37,6 @@ int main(int argc, char **argv){
 				}else{
 					count++;
 				}
-				/*while(c != '\n' && c != '\t' && c != ' ' && c != EOF){
-					count++;
-					c = fgetc(f);
-				}
-				while(c == '\n' || c == '\t' || c == ' '){
-					count++;
-					if (c == '\n') nl++;
-					c = fgetc(f);
-				}
-				words++;*/
 			}
 			printf("%*s  : %5d %5d %6d\n", max_argvlen, argv[i], nl, words,count);
 			fclose(f);
