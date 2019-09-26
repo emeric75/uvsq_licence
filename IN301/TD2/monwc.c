@@ -21,8 +21,8 @@ int main(int argc, char **argv){
 			count = 0;
 			nl = 0;
 			words = 0;
-			while((c = fgetc(f)) != EOF){
-				if(c == '\n' || c == '\t' || c == ' ' || c == EOF){
+			while(fscanf(f, "%c", &c) != EOF){
+				if(c == '\n' || c == '\t' || c == ' ' || c == '\r' || c == EOF){
 					a_iswhite = iswhite;
 					iswhite = 1;
 				}else{
