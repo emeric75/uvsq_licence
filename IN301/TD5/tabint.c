@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+unsigned long long int NB_COMP_FUS = 0;
+
 // #####
 // 1. Génération, suppression et affichage de tableaux
 // #####
@@ -12,7 +14,7 @@ TABINT gen_alea_tabint (int N, int K) {
 	srand(getpid());
 	T.N =N;
 	T.T = malloc(N*sizeof(int));
-	if(T.T == NULL){printf("error allocating memory"); exit(1);}
+	if(T.T == NULL){printf("error allocating memory\n"); exit(1);}
 	for(int *p = T.T; p<T.T+T.N; p++) *p = rand()%(K+1);
 	return T;
 }
@@ -53,4 +55,31 @@ struct test scan_ech_tabint (TABINT T, int fin)  {
 		t = ech_tabint(T,i,t);
 	}
 	return t;
+}
+
+void fusionner(TABINT T, int g, int m, int d){
+	TABINT T3 = gen_alea_tabint(d-g+1,0);
+	int indg=g, indd=m+1;
+	for(int i = 0; i<d-g+1; i++){
+		if(indg == m+1){
+			(T3.T)[i] = (T.T)[indd];
+			indd++;
+		}else if(indd == d+1){
+			(T3.T)[i] = (T.T)[indg];
+			indg++;
+		}else{
+			if((T.T)[indg]<(T.T)[indd]){
+				(T3.T)[i] = (T.T)[indg];
+				indg++;
+			}else{
+				(T3.T)[i] = (T.T)[indd];
+				indd++;
+			}
+			NB_COMP_FUS++;
+		}
+	}
+	for(int i = 0; i<d-g+1; i++){
+		(T.T)[g+i] = (T3.T)[i];
+	}
+	sup_tabint(T3);
 }

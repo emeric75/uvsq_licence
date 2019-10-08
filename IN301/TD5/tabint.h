@@ -2,6 +2,8 @@
 #define _TABINT_H
 #include "stat.h"
 
+unsigned long long int NB_COMP_FUS;
+
 struct tabint {
     int N;  // Taille du tableau
     int *T; // Pointeur vers le tableau

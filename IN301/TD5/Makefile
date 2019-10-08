@@ -2,11 +2,21 @@ visu: stat.pdf
 	evince stat.pdf &
 
 
-stat.pdf: tri_bulle stat.gplt test_tri_bulle.data
+stat.pdf: tri_bulle tri_fusion stat.gplt test_tri_bulle.data test_tri_fusion.data
 	gnuplot stat.gplt
 
 test_tri_bulle.data: tri_bulle
 	time ./tri_bulle
+
+test_tri_fusion.data: tri_fusion
+	time ./tri_fusion
+
+# Tri fusion
+tri_fusion: tri_fusion.o tabint.o
+	gcc -Wall -o tri_fusion tri_fusion.o tabint.o
+
+tri_fusion.o: tri_fusion.c tabint.h stat.h
+	gcc -Wall -c tri_fusion.c
 
 
 # Le tri à bulles
@@ -27,6 +37,8 @@ clean:
 	rm -f tri_bulle.o tri_bulle
 	rm -f stat.pdf
 	rm -f test_tri_bulle.data
+	rm -f tri_fusion tri_fusion.o
+	rm -f test_tri_fusion.data
 	ls -l
 
 ZIPNAME=IN301_TD5_TRI_INT
