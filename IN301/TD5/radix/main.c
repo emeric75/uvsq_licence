@@ -4,29 +4,34 @@
 
 
 int main(int argc, char** argv){
-  Tableau t1, t2;
+  Tableau t1, t2, t3;
 
   if(argc != 2){
     fprintf(stderr, "Format attendu:\n%s fichier\n", argv[0]);
     exit(EXIT_FAILURE);
   }
-
   t1 = init_tab_fic(argv[1]);
   t2 = copy_tab(t1);
-  affiche_tab(t2);
+  t3 = copy_tab(t2);
+  if(t2.n < 10)affiche_tab(t2);
   
-/*  chrono_start();
+  chrono_start();
   tri_base(t1);
   printf("Duree d'execution tri par base: %f millisecondes\n", 1000*chrono_lap());
-  //affiche_tab(t1);
-  t1 = libere_tab(t1);*/
+  if(t1.n<10) affiche_tab(t1);
+  t1 = libere_tab(t1);
   
   
   chrono_start();
   tri_cmp(t2);
   printf("Duree d'execution du tri par comparaison: %f millisecondes\n", 1000*chrono_lap());
-  affiche_tab(t2);
+  if(t2.n < 10) affiche_tab(t2);
   t2 = libere_tab(t2);
 
+  /*chrono_start();
+  tri_base_msd(t3);
+  printf("Duree d'execution du tri par base MSD: %f millisecondes\n", 1000*chrono_lap());
+  if(t2.n < 10) affiche_tab(t3);
+  t3 = libere_tab(t3);*/
   return EXIT_SUCCESS;
 }

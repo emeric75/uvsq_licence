@@ -4,24 +4,41 @@
 //associe à chaque caractere un indice dans le tableau des frequences
 //les caractes possible sont les caracteres alphabetiques en minuscules et le caractere de fin de chaine '\0'
 int indice(char c){
-  return c-'a';
+  if(c==0) return 0;
+  return c-'a'+1;
 }
 
 
 
 //tri le tableau  selon la composante i
 void tri_base_indice(Tableau t, int i){
-	int j;
-	int freq[26];
+	int j,put;
+	int freq[27],freq_cum[27],ind[27];
 	Tableau res;
-	res.n = t.n;
-	res.taille = t.taille;
-	//res.tab = malloc(); allouer un tableau multidim vide
-	for(j=0; j<26; j++){
+	res = copy_tab(t);
+	for(j=0; j<27; j++){
 		freq[j] = 0;
+	}
+	for(j=0; j<27;j++){
+		ind[j] = 0;
 	}
 	for(j=0 ;j<t.n;j++){
 		freq[indice(t.tab[j][i])]++;
+	}
+
+	freq_cum[0]=0;
+	for(j=1 ;j<27;j++){
+		freq_cum[j] = freq_cum[j-1] + freq[j-1];
+		//printf("freq_cum %d = %d\n",j,freq_cum[j]);
+	}
+	for(j=0 ;j<t.n;j++){
+		//mettre à l'indice = freq_cum[indice(t.tab[j][i])] + ind[indice(t.tab[j][i])]
+		put = freq_cum[indice(t.tab[j][i])] + ind[indice(t.tab[j][i])];
+		res.tab[put] = t.tab[j];
+		ind[indice(t.tab[j][i])]++;
+	}
+	for(j=0;j<t.n;j++){
+		t.tab[j] = res.tab[j];
 	}
 }
 
@@ -31,31 +48,33 @@ void tri_base_indice(Tableau t, int i){
 //tri par base 
 void tri_base(Tableau t){
   int i;
-  for(i=t.taille-1; i>=0; i--)
+  for(i=t.taille-1; i>=0; i--){
+    //printf("taille = %d\n",i);
     tri_base_indice(t, i);
+    //affiche_tab(t);
+    //printf("\n");
+  }
 }
-
-
-
-
+//TODO
+void tri_base_msd(Tableau t,int i,int g, int d){
+	if(i == t.taille-1) return;
+	tri_base_indice(t,i);
+	int indeb = g, inmax = g;
+	for(int j=0; j<27; j++){
+		while(indice(t.tab[inmax][i]) == j) inmax++;
+		tri_base_msd(t,i+1,indeb,inmax-1);
+		indeb=inmax;
+	}
+}
 //tri le tableau entre indices g et d compris
 
 int partition(Tableau t, int g, int d){
 	int i = g+1, j=d;
 	//printf("%d %d\n", i,j);
 	char *temp;
-	if(i == j){
-		if(strcmp(t.tab[i-1],t.tab[i]) > 0){
-			temp = t.tab[i-1];
-			t.tab[i-1] = t.tab[i];
-			t.tab[i] = temp;
-			return i;
-		}
-		return i-1;
-	}
-	while(i <= j && i < d && j>g){
-		while(strcmp(t.tab[i],t.tab[g]) <= 0 && i <= j && i<d && j > g) i++;
-		while(strcmp(t.tab[j],t.tab[g]) >= 0 && i <= j && i<d && j>g) j--;
+	while(i <= j){
+		while(i<=j && strcmp(t.tab[i],t.tab[g]) <= 0 ) i++;
+		while(i<=j && strcmp(t.tab[j],t.tab[g]) > 0) j--;
 		if(i<j){
 			temp = t.tab[i];
 			t.tab[i] = t.tab[j];
