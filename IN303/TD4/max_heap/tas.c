@@ -11,6 +11,10 @@ TAS_TAB creer_tas_tab(){
 	if(t.tab == NULL){printf("error allocating memory"); exit(1);}
 	return t;
 }
+int tas_tab_est_vide(TAS_TAB t){
+	if(t.N == 1) return 1;
+	return 0;
+}
 void aff_tas_tab(TAS_TAB t){
 	printf("tas: ");
 	for(int i = 1; i<t.N; i++){
@@ -48,7 +52,7 @@ TAS_TAB tasser_tab(TAS_TAB t){
 	return t;
 }
 ELEM get_most_prio(TAS_TAB *t){
-	if(t->N < 2){printf("get_most_prio : empty heap\n"); exit(1);} 
+	if(t->N < 2){printf("get_most_prio : empty heap\n"); exit(1);}
 	ELEM max = t->tab[1];
 	t->tab[1] = t->tab[t->N-1];
 	t->N--;
