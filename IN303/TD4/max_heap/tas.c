@@ -51,11 +51,36 @@ TAS_TAB tasser_tab(TAS_TAB t){
 	}
 	return t;
 }
-ELEM get_most_prio(TAS_TAB *t){
+//facile à écrire : pas optimisé O(nlogn)
+/*ELEM get_most_prio(TAS_TAB *t){
 	if(t->N < 2){printf("get_most_prio : empty heap\n"); exit(1);}
 	ELEM max = t->tab[1];
 	t->tab[1] = t->tab[t->N-1];
 	t->N--;
 	*t=tasser_tab(*t);
+	return max;
+}*/
+//O(logn)
+ELEM get_most_prio(TAS_TAB *t){
+	if(tas_tab_est_vide(*t)){printf("get_most_prio : empty heap\n"); exit(1);}
+	ELEM max = t->tab[1];
+	t->tab[1] = t->tab[t->N-1];
+	t->N--;
+	int i = 1;
+	ELEM temp;
+	while((2*i+1 < t->N && t->tab[i].prio < t->tab[2*i+1].prio) ||
+		(2*i < t->N && t->tab[i].prio < t->tab[2*i].prio) ){
+		if(2*i+1< t->N && t->tab[2*i].prio < t->tab[2*i+1].prio){
+			temp = t->tab[i];
+			t->tab[i] = t->tab[2*i+1];
+			t->tab[2*i+1] = temp;
+			i = 2*i+1;
+		}else{
+			temp = t->tab[i];
+			t->tab[i] = t->tab[2*i];
+			t->tab[2*i] = temp;
+			i *= 2;
+		}
+	}
 	return max;
 }
