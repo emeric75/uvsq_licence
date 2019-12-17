@@ -5,16 +5,14 @@ int main(){
 	ABR *a = arbre_vide();
 	//printf("%d\n",est_vide(a));
 	lib_abr(a);
-	ABR *b = feuille(12);
-	b = inserer_abr(b,4);
-	b = inserer_abr(b,42);
-	b = inserer_abr(b,17);
-	b = inserer_abr(b,10);
+	ABR *b = arbre_vide();
+	for(int i = 1; i < 17; i++){
+		b=inserer_abr(b,i);
+	}
 	aff_abr(b);
-	printf("%d\n",hauteur_abr(b));
+	b=equilibre(b);
+	aff_abr(b);
 	printf("est_equilibre(b) ? %d\n",est_equilibre(b));
-	b = supprimer_abr(b,12);
-	aff_abr(b);
-	//parcours_largeur(b);
+	printf("%d\n",hauteur_abr(b));
 	lib_abr(b);
 }

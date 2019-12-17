@@ -37,9 +37,12 @@ ABR* inserer_abr(ABR *a, int val){
 }
 void aff_abr(ABR *a){
 	if(a){
-		aff_abr(a->fg);
+		//prefixe
 		printf("%d\n",a->racine);
+		aff_abr(a->fg);
+		//infixe
 		aff_abr(a->fd);
+		//postfixe
 	}
 }
 int max(int a, int b){
@@ -68,11 +71,13 @@ ABR *supprimer_abr(ABR *a, int val){
 			if(!a->fg){
 				temp = a;
 				a = a->fd;
-				return temp;
+				free(temp);
+				return a;
 			}else if(!a->fd){
 				temp = a;
 				a = a->fg;
-				return temp;
+				free(temp);
+				return a;
 			}else{
 				int m = max_abr(a->fg);
 				a=supprimer_abr(a,max_abr(a->fg));
@@ -132,4 +137,46 @@ void parcours_largeur(ABR *a){
 			f = enfile(f,traiter->fd);
 		}
 	}
+}
+ABR *rot_droite(ABR *a){
+	if(!a || !a->fg) return a;
+	int x = a->fg->racine;
+	int y = a->racine;
+	ABR *a1 = a->fg->fg;
+	ABR *a2 = a->fg->fd;
+	ABR *a3 = a->fd;
+	ABR *res = feuille(x);
+	res->fd = feuille(y);
+	res->fg = a1; res->fd->fg = a2; res->fd->fd = a3;
+	return res;	
+}
+ABR *rot_gauche(ABR *a){
+	if(!a || !a->fd) return a;
+	int x = a->racine;
+	int y = a->fd->racine;
+	ABR *a1 = a->fg;
+	ABR *a2 = a->fd->fg;
+	ABR *a3 = a->fd->fd;
+	ABR *res = feuille(y);
+	res->fg = feuille(x);
+	res->fd = a3; res->fg->fg = a1; res->fg->fd = a2;
+	return res;	
+}
+ABR *equilibre(ABR *a){
+	if(!est_equilibre(a)){
+		int hg = hauteur_abr(a->fg);
+		int hd = hauteur_abr(a->fd);
+		a->fg = equilibre(a->fg);
+		a->fd = equilibre(a->fd);
+		if(hg > hd+1){ //rot d
+			if(hauteur_abr(a->fg->fd) > hauteur_abr(a->fg->fg))
+				a->fg = rot_droite(a->fg);
+			a=rot_droite(a);
+		}else if(hd > hg+1){ //rot g
+			if(hauteur_abr(a->fd->fg) > hauteur_abr(a->fd->fd))
+				a->fd = rot_droite(a->fd);
+			a=rot_gauche(a);
+		}
+		a=equilibre(a);
+	}else return a;
 }

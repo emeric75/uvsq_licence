@@ -13,8 +13,9 @@ void aff_abr(ABR *);
 int hauteur_abr(ABR *);
 int est_equilibre(ABR *);
 ABR *supprimer_abr(ABR *a, int val);
-
-
+ABR *rot_droite(ABR *);
+ABR *rot_gauche(ABR *);
+ABR *equilibre(ABR *);
 struct elemfabr{
 	ABR* elem;
 	struct elemfabr *prec;
@@ -29,3 +30,4 @@ FABR file_vide();
 int est_vide_fabr(FABR);
 FABR enfile(FABR,ABR*);
 ABR *defile(FABR*);
+void parcours_largeur(ABR *);
