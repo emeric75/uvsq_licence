@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Attributes
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ Attributes\ ici.\n\n\ @author\ (votre\ nom)\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\n
+comment1.params=
+comment1.target=Attributes\ playerAttributes()
+comment1.text=\n\ Constructeur\ d'objets\ de\ classe\ Attributes\n
+comment10.params=
+comment10.target=java.lang.String\ toString()
+comment2.params=
+comment2.target=Attributes\ weakEnemyAttributes()
+comment3.params=
+comment3.target=Attributes\ mildEnemyAttributes()
+comment4.params=
+comment4.target=Attributes\ strongEnemyAttributes()
+comment5.params=minhp\ maxhp\ minatk\ maxatk\ minweight\ maxweight
+comment5.target=Attributes(int,\ int,\ int,\ int,\ int,\ int)
+comment6.params=
+comment6.target=int\ getMaxHp()
+comment7.params=
+comment7.target=int\ getAtk()
+comment8.params=
+comment8.target=int\ getSpeed()
+comment9.params=
+comment9.target=int\ getWeight()
+numComments=11

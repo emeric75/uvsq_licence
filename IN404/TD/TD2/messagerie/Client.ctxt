@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Client
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ Client\ ici.\n\n\ @author\ (votre\ nom)\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\n
+comment1.params=name
+comment1.target=Client(java.lang.String)
+comment1.text=\n\ Constructeur\ d'objets\ de\ classe\ Client\n
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment3.params=s
+comment3.target=void\ seConnecter(Serveur)
+comment4.params=s
+comment4.target=void\ seDeconnecter(Serveur)
+comment5.params=s\ message
+comment5.target=void\ envoyer(Serveur,\ java.lang.String)
+comment6.params=message
+comment6.target=void\ recevoir(java.lang.String)
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8

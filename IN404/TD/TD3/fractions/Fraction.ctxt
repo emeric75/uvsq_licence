@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Fraction
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ Fraction\ ici.\n\n\ @author\ (votre\ nom)\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\n
+comment1.params=num\ denom
+comment1.target=Fraction\ fromNumDenom(int,\ int)
+comment10.params=f1\ f2
+comment10.target=boolean\ leq(Fraction,\ Fraction)
+comment2.params=num
+comment2.target=Fraction\ fromNum(int)
+comment3.params=num\ denom
+comment3.target=Fraction(int,\ int)
+comment3.text=\n\ Constructeur\ d'objets\ de\ classe\ Fraction\n
+comment4.params=
+comment4.target=int\ getNum()
+comment4.text=\n\ Un\ exemple\ de\ m\u00E9thode\ -\ remplacez\ ce\ commentaire\ par\ le\ v\u00F4tre\n\n\ @param\ \ y\ \ \ le\ param\u00E8tre\ de\ la\ m\u00E9thode\n\ @return\ \ \ \ \ la\ somme\ de\ x\ et\ de\ y\n
+comment5.params=
+comment5.target=int\ getDenom()
+comment6.params=
+comment6.target=double\ getValue()
+comment7.params=add1\ add2
+comment7.target=Fraction\ add(Fraction,\ Fraction)
+comment8.params=f1\ f2
+comment8.target=boolean\ equals(Fraction,\ Fraction)
+comment9.params=
+comment9.target=java.lang.String\ toString()
+numComments=11

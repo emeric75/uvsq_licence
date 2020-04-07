@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Repertoire
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ Repertoire\ ici.\n\n\ @author\ (votre\ nom)\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\n
+comment1.params=name\ taille\ pere
+comment1.target=Repertoire(java.lang.String,\ int,\ Dossier)
+comment1.text=\n\ Constructeur\ d'objets\ de\ classe\ Repertoire\n
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment3.params=
+comment3.target=int\ getTaille()
+comment4.params=
+comment4.target=Dossier\ getPere()
+comment5.params=taille
+comment5.target=void\ setTaille(int)
+comment6.params=pere
+comment6.target=void\ setPere(Dossier)
+comment7.params=delta
+comment7.target=void\ updateTaille(int)
+numComments=8

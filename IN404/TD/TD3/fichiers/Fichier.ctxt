@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Fichier
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ Fichier\ ici.\n\n\ @author\ (votre\ nom)\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\n
+comment1.params=name\ taille\ pere
+comment1.target=Fichier(java.lang.String,\ int,\ Dossier)
+comment1.text=\n\ Constructeur\ d'objets\ de\ classe\ Fichier\n
+numComments=2

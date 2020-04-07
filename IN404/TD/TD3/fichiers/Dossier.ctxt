@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Dossier
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ Dossier\ ici.\n\n\ @author\ (votre\ nom)\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\n
+comment1.params=name\ pere
+comment1.target=Dossier(java.lang.String,\ Dossier)
+comment1.text=\n\ Constructeur\ d'objets\ de\ classe\ Dossier\n
+comment2.params=r
+comment2.target=void\ addRepertoire(Repertoire)
+comment3.params=r
+comment3.target=void\ removeRepertoire(Repertoire)
+numComments=4

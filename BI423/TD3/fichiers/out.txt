@@ -1,0 +1,4 @@
+Resultats testseq.txt
+AATTAAGGCCGG
+Longueur : 12
+Pourcentage purines : 66.67

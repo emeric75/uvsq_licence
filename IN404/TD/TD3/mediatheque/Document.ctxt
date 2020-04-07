@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Document
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ Document\ ici.\n\n\ @author\ (votre\ nom)\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\n
+comment1.params=title\ artist
+comment1.target=Document(java.lang.String,\ java.lang.String)
+comment1.text=\n\ Constructeur\ d'objets\ de\ classe\ Document\n
+comment2.params=
+comment2.target=java.lang.String\ getTitle()
+comment3.params=
+comment3.target=java.lang.String\ getArtist()
+comment4.params=
+comment4.target=void\ getInfos()
+numComments=5
