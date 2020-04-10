@@ -13,7 +13,6 @@ i = 0
 print "Occurrences de", motif, ":"
 while i<len(seq):
 	k=0
-	ok=1
 	while k<len(motif) and i+k<len(seq) and seq[i+k] == motif[k]:
 		k+=1
 	if k == len(motif):

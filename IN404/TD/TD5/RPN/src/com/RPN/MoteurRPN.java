@@ -1,7 +1,7 @@
 package com.RPN;
-import java.util.Iterator;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MoteurRPN {
     private List<Float> pile;
@@ -27,9 +27,8 @@ public class MoteurRPN {
             f2 = this.getTop();
             this.push(o.eval(f1,f2));
         }catch(NoOperandsException e){
-            if(f1 != null) {
+            if (f1 != null)
                 this.push(f1);
-            }
             throw new NoOperandsException(e.getMessage());
         }catch(ValueException e){
             this.push(f2);
@@ -39,9 +38,8 @@ public class MoteurRPN {
     }
     public void printPile(){
         System.out.println("-------");
-        for(Float operand : pile){
+        for (Float operand : pile)
             System.out.println(operand.toString());
-        }
         System.out.println("-------");
     }
 }
