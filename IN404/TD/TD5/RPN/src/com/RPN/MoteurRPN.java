@@ -11,29 +11,30 @@ public class MoteurRPN {
     public void push(Float f){
         pile.add(f);
     }
-    public Float getTop() throws NoOperandsException{
-        try{
-            Float f = pile.get(pile.size()-1);
-            pile.remove(pile.size()-1);
+    public Float getTop() throws NoOperandsException {
+        try {
+            Float f = pile.get(pile.size() - 1);
+            pile.remove(pile.size() - 1);
             return f;
-        }catch(IndexOutOfBoundsException e){
-            throw new NoOperandsException("La pile est vide.");
+        } catch (IndexOutOfBoundsException e) {
+            throw new NoOperandsException("Pas assez d'éléments dans la pile.");
         }
     }
-    public void applyOp(Operation o) throws NoOperandsException,ValueException{
-        Float f1=null,f2=null;
+
+    public void applyOp(Operation o) {
+        Float f1 = null, f2 = null;
         try {
             f1 = this.getTop();
             f2 = this.getTop();
-            this.push(o.eval(f1,f2));
-        }catch(NoOperandsException e){
+            this.push(o.eval(f2, f1));
+        } catch (NoOperandsException e) {
             if (f1 != null)
                 this.push(f1);
-            throw new NoOperandsException(e.getMessage());
-        }catch(ValueException e){
+            System.out.println(e.getMessage());
+        } catch (ValueException e) {
             this.push(f2);
             this.push(f1);
-            throw new ValueException(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
     public void printPile(){
