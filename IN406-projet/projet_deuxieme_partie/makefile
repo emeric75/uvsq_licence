@@ -9,8 +9,8 @@ run: clean automate
 	./automate "(a+b).*a#"
 	./automate "a+b**.(a.b.z)+d#"
 
-automate: test.o automate.o regexp_error.o pile.o
-	$(CC) test.o automate.o regexp_error.o pile.o -o automate
+automate: test.o automate.o regexp.o pile.o
+	$(CC) test.o automate.o regexp.o pile.o -o automate
 
 %.o: %.c automate.h regexp.h
 	$(CC) -c $< $(CFLAGS) 
