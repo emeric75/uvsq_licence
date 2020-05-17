@@ -1,0 +1,2 @@
+emgo.ceci.est.un.test 192.168.1.1
+bango.ceci.est.un.test 192.168.2.1

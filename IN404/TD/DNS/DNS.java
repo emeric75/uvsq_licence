@@ -61,7 +61,8 @@ public class DNS {
         ArrayList<DNSItem> out = domain_map.get(domain);
         if(out != null) {
             if (_a) {
-                out.sort(Comparator.comparing(i -> i.getIP().toString()));
+                //on récupère l'IP du DNSItem, puis on trie par IPComparator
+                out.sort(Comparator.comparing(i->i.getIP(),new IPComparator()));
             }else {
                 out.sort(Comparator.comparing(i -> i.getName().toString()));
             }

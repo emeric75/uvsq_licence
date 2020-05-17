@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Emeric_GOUY_DNS">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Emeric_GOUY_DNS.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

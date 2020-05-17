@@ -21,6 +21,11 @@ public class AdresseIP {
         }
         return new AdresseIP(IP);
     }
+
+    public Integer[] getIP() {
+        return IP;
+    }
+
     @Override
     public String toString(){
         return IP[0].toString() + "." + IP[1].toString() + "." + IP[2].toString() + "." + IP[3].toString();
