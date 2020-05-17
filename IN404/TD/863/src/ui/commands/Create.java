@@ -1,4 +1,4 @@
-package ui;
+package ui.commands;
 
 import stock.Circle;
 import stock.Rectangle;
@@ -9,13 +9,14 @@ import java.util.Arrays;
 
 public class Create implements Command{
     private String[] args;
-    public void setArgs(String... args){
+    public Create(String[] args) {
         this.args = args;
     }
+    
+
     @Override
     public String execute(Stock stock) {
-        //exception
-        if(args == null || args.length < 1) throw new IllegalArgumentException("Pas assez d'arguments");
+        if(args.length == 0) throw new IllegalArgumentException("Pas assez d'arguments pour create");
         Shape to_create;
         String findShape = args[0];
         String[] remainingArgs = Arrays.copyOfRange(args,1,args.length);
@@ -25,7 +26,7 @@ public class Create implements Command{
             default:
                 throw new IllegalArgumentException("Le type de figure que vous voulez créer n'existe pas.");
         }
-        stock.create(to_create);
-        return findShape + " créé.";
+        stock.create(stock.getNbFigs()+"",to_create);
+        return findShape + " " + (stock.getNbFigs()-1) + " créé.";
     }
 }

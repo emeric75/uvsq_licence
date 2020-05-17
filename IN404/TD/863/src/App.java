@@ -1,6 +1,6 @@
 import stock.Stock;
-import ui.Command;
-import ui.Quit;
+import ui.commands.Command;
+import ui.commands.Quit;
 import ui.UI;
 
 public class App {
@@ -17,5 +17,7 @@ public class App {
                 ui.display(e.getMessage());
             }
         }
+        c = ui.saveOnQuit();
+        if(c != null) c.execute(stock);
     }
 }
